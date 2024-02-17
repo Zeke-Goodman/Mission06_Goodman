@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Title of the page -->
+    <title>@ViewData["Title"] - ZekeGoodmanMission6</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Additional custom styles -->
+    <link rel="stylesheet" href="~/ZekeGoodmanMission6.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <!-- Navbar toggler for small screens -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navbar content -->
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!-- Home link -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <!-- Get to know Joel link -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="meetJoel">Get to know Joel</a>
+                        </li>
+                        <!-- Add Movie link -->
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="movies">Add Movie</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Main content area -->
+        <main role="main" class="pb-3">
+            <!-- Render body content -->
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <!-- Copyright notice -->
+            &copy; 2024 - ZekeGoodmanMission6 - <a asp-area="" asp-controller="Home" asp-action="meetJoel">Get to know Joel</a>
+        </div>
+    </footer>
+    <!-- jQuery -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap bundle (includes Popper.js) -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Optional scripts section -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
