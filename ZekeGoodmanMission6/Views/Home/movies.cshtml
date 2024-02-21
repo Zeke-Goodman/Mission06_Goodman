@@ -4,20 +4,20 @@
 @{
     ViewData["Title"] = "Get to know Joel";
 }
-@model insertMovie
+@model Movie
 
 <div class="container">
     <!-- Movie submission form -->
     <form method="post" class="needs-validation" novalidate>
         <div class="mb-3">
-            <label asp-for="Category" class="form-label">Movie Category: </label>
-            <input asp-for="Category" type="text" class="form-control" required />
+            <label asp-for="CategoryId" class="form-label">Movie Category: </label>
+            <select asp-for="CategoryId">
+                @foreach (Category cat in ViewBag.CategoryList)
+                {
+                    <option value="@cat.CategoryId">@cat.CategoryName</option>
+                }
+            </select>
             <div class="invalid-feedback">Please enter the movie category.</div>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Subcategory" class="form-label">Movie Sub-category: </label>
-            <input asp-for="Subcategory" type="text" class="form-control" required />
-            <div class="invalid-feedback">Please enter the movie sub-category.</div>
         </div>
         <div class="mb-3">
             <label asp-for="Title" class="form-label">Movie Title: </label>

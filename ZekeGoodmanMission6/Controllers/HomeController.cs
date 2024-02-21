@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Reflection;
 using ZekeGoodmanMission6.Models;
@@ -33,12 +34,13 @@ namespace ZekeGoodmanMission6.Controllers
         [HttpGet]
         public IActionResult movies()
         {
+            ViewBag.CategoryList = _context.Categories.ToList();
             return View();
         }
 
         // Action method for submitting movie data (HTTP POST)
         [HttpPost]
-        public IActionResult movies(insertMovie response)
+        public IActionResult movies(Movie response)
         {
             // Add movie data to the database
             _context.Movies.Add(response);
@@ -47,5 +49,17 @@ namespace ZekeGoodmanMission6.Controllers
             // Redirect to the movies page with the submitted movie data
             return View("movies", response);
         }
+
+        [HttpGet]
+        public IActionResult AllMovies()
+        { 
+            var GetMovies = _context.Movies.Include("Category")
+                .ToList();
+
+            return View(GetMovies);
+        }
+
+
+
     }
 }

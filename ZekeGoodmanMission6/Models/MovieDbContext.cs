@@ -11,6 +11,8 @@ namespace ZekeGoodmanMission6.Models
         }
 
         // DbSet for accessing movie entities in the database
-        public DbSet<insertMovie> Movies { get; set; }
+        //
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
