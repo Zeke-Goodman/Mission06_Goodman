@@ -9,6 +9,9 @@
 <div class="container">
     <!-- Movie submission form -->
     <form method="post" class="needs-validation" novalidate>
+
+        <input type="hidden" asp-for="MovieId"/>
+
         <div class="mb-3">
             <label asp-for="CategoryId" class="form-label">Movie Category: </label>
             <select asp-for="CategoryId">
@@ -63,5 +66,7 @@
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
+
+        <span asp-validation-for="Year"></span>
     </form>
 </div>

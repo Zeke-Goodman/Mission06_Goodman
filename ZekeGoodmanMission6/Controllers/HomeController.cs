@@ -52,14 +52,55 @@ namespace ZekeGoodmanMission6.Controllers
 
         [HttpGet]
         public IActionResult AllMovies()
-        { 
+        {
             var GetMovies = _context.Movies.Include("Category")
                 .ToList();
 
             return View(GetMovies);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
 
+            var RecordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+
+
+            //ViewBag.Categories = _context.Categories
+            ViewBag.CategoryList = _context.Categories.OrderBy(x => x.CategoryId).ToList();
+            //.OrderBy(x => x.CategoryId)
+            //.ToList();
+
+            return View("movies", RecordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Movie UpdatedInfo)
+        {
+            _context.Update(UpdatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("AllMovies");
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var RecordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View(RecordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            _context.Movies.Remove(movie);
+            _context.SaveChanges();
+
+            return RedirectToAction("AllMovies");
+        }
 
     }
 }
