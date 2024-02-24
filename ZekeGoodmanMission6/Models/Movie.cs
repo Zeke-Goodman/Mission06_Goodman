@@ -15,7 +15,7 @@ namespace ZekeGoodmanMission6.Models
         public int MovieId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; }
+        public int CategoryId { get; set; } = 1;
         public Category Category { get; set; }
         [Required]
         public string Title { get; set; }

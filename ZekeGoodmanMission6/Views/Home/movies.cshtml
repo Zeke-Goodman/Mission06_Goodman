@@ -15,6 +15,7 @@
         <div class="mb-3">
             <label asp-for="CategoryId" class="form-label">Movie Category: </label>
             <select asp-for="CategoryId">
+                <option value="">Select a category</option>
                 @foreach (Category cat in ViewBag.CategoryList)
                 {
                     <option value="@cat.CategoryId">@cat.CategoryName</option>
@@ -51,8 +52,15 @@
         <div class="mb-3">
             <label asp-for="Edited" class="form-label">Edited: </label>
             <select asp-for="Edited" class="form-select">
-                <option value="No">No</option>
-                <option value="Yes">Yes</option>
+                <option value="@false">No</option>
+                <option value="@true">Yes</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CopiedToPlex" class="form-label">Copied to Plex: </label>
+            <select asp-for="CopiedToPlex" class="form-select">
+                <option value="@false">No</option>
+                <option value="@true">Yes</option>
             </select>
         </div>
         <div class="mb-3">
@@ -66,7 +74,6 @@
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-
-        <span asp-validation-for="Year"></span>
+        <div asp-validation-summary="All"></div>
     </form>
 </div>
