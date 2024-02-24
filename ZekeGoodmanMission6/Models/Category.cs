@@ -5,7 +5,8 @@ namespace ZekeGoodmanMission6.Models
     public class Category
     {
         [Key]
-        public required int CategoryId { get; set; }
-        public required string CategoryName { get; set; }
+        public int CategoryId { get; set; }
+        [Required]
+        public string CategoryName { get; set; }
     }
 }

@@ -34,7 +34,9 @@ namespace ZekeGoodmanMission6.Controllers
         [HttpGet]
         public IActionResult movies()
         {
-            ViewBag.CategoryList = _context.Categories.ToList();
+            ViewBag.CategoryList = _context.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
             return View();
         }
 
@@ -46,6 +48,9 @@ namespace ZekeGoodmanMission6.Controllers
             _context.Movies.Add(response);
             _context.SaveChanges();
 
+            ViewBag.CategoryList = _context.Categories
+                .OrderBy(x => x.CategoryId)
+                .ToList();
             // Redirect to the movies page with the submitted movie data
             return View("movies", response);
         }
