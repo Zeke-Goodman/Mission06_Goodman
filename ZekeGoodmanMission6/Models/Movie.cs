@@ -14,9 +14,9 @@ namespace ZekeGoodmanMission6.Models
         [Required]
         public int MovieId { get; set; }
 
-        [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; } = 1;
-        public Category Category { get; set; }
+        [ForeignKey("Category")]
+        public int? CategoryId { get; set; } = 1;
+        public Category? Category { get; set; }
         [Required]
         public string Title { get; set; }
         [Range(1888, int.MaxValue, ErrorMessage = "Year must be greater than or equal to 1888")]
